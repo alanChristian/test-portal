@@ -201,7 +201,10 @@
   </div>
 
   <!-- Content -->
-  <div style="margin-top: 3rem; margin-bottom:5rem;" class="flex flex-col container">
+  <div
+    style="margin-top: 3rem; margin-bottom: 5rem"
+    class="flex flex-col container"
+  >
     <!-- Initial Brief -->
     <div class="h-auto initial-brief">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -218,52 +221,27 @@
       egestas egestas. Id diam maecenas ultricies mi eget mauris pharetra et.
     </div>
 
-    <form style="margin-top: 3rem" class="">
+    <form style="margin-top: 3rem" [formGroup]="questionGroup">
       <!-- Question One -->
-      <div>
-        <h3>1. Is this a question?</h3>
+      <div *ngFor="let question of randomizedQuestionArray; let i=index">
+        <h3>{{i+1}}. {{question}}</h3>
         <mat-form-field class="w-full" appearance="outline">
           <mat-label>Leave a comment</mat-label>
           <textarea
             style="height: 10rem"
             matInput
             placeholder="Ex. It makes me feel..."
+            [formControlName]="questionsFormControl[i]"
           ></textarea>
         </mat-form-field>
       </div>
 
-      <hr
-        style="margin-top: 1rem; margin-bottom: 1rem; background-color: #777e98"
-      />
-      <!-- Question Two -->
-      <div>
-        <h3>2. Another Question</h3>
-        <mat-form-field class="w-full" appearance="outline">
-          <mat-label>Leave a comment</mat-label>
-          <textarea
-            style="height: 10rem"
-            matInput
-            placeholder="Ex. It makes me feel..."
-          ></textarea>
-        </mat-form-field>
-      </div>
-      <hr
-        style="margin-top: 1rem; margin-bottom: 1rem; background-color: #777e98"
-      />
 
-      <!-- Question Three -->
-      <div>
-        <h3>3. Yes and another one</h3>
-        <mat-form-field class="w-full" appearance="outline">
-          <mat-label>Leave a comment</mat-label>
-          <textarea
-            style="height: 10rem"
-            matInput
-            placeholder="Ex. It makes me feel..."
-          ></textarea>
-        </mat-form-field>
-      </div>
+      <hr
+        style="margin-top: 1rem; margin-bottom: 1rem; background-color: #777e98"
+      />
     </form>
+
     <hr
       style="margin-top: 1rem; margin-bottom: 1rem; background-color: #777e98"
     />
